@@ -1,0 +1,10 @@
+{
+"clangd.fallbackFlags": [
+	"-Wall",
+	"-Wextra",
+	"-Wpedantic",
+	"-Wvla",
+	"-g",
+	"-std=c99"
+]
+}
