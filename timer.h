@@ -16,5 +16,4 @@ typedef struct Timer {
 } Timer;
 
 Timer TimerCreate(void);
-
 #endif

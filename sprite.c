@@ -5,8 +5,8 @@
 
 /***********************************************************
 * SpriteDrawF: Function used as a pointer inside the Sprite*
-               struct to work as a method, draws every     *
-               Texture2D inside the sprite                 *
+*              struct to work as a method, draws every     *
+*              Texture2D inside the sprite                 *
 ***********************************************************/
 static void SpriteDrawF(struct Sprite *self)
 {
@@ -14,9 +14,9 @@ static void SpriteDrawF(struct Sprite *self)
 }
 
 /*******************************************************************************
-* SpriteDrawF: Function used as a pointer inside the Sprite struct to work as a*
-               method, updates the anim_index variable inside Sprite based on  *
-               the speed.                                                      *
+* SpriteUpdateF: Function used as a pointer inside the Sprite struct to work as*
+*                a method, updates the anim_index variable inside Sprite based *
+*                on the speed.                                                 *
 ********************************************************************************/
 static void SpriteUpdateF(struct Sprite *self, float dt)
 {

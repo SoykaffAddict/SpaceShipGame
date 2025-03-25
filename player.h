@@ -1,7 +1,14 @@
+#include "sprite.h"
 #include <raylib.h>
 
 #ifndef SPACESHIP_PLAYER
 #define SPACESHIP_PLAYER
+
+typedef struct Bullet {
+	int damage;
+	Rectangle hitbox;
+	Sprite sprite;
+} Bullet;
 
 typedef struct Player {
 	Vector2 pos;

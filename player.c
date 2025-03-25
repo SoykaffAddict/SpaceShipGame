@@ -28,6 +28,11 @@ static void PlayerUpdateF(Player *self, float dt)
 		self->pos.y = GetScreenHeight() - self->texture.height;
 }
 
+static Bullet PlayerBulletCreate(Player *self)
+{
+
+}
+
 Player PlayerCreate(void)
 {
 	char *player_t_path = Join(3, "assets", "images", "spaceship.png");
