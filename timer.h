@@ -1,7 +1,9 @@
-#include <stdbool.h>
 
 #ifndef SPACESHIP_TIMER
+
 #define SPACESHIP_TIMER
+#include <stdbool.h>
+
 typedef struct Timer {
 	float duration;
 	int start_time;
@@ -13,5 +15,6 @@ typedef struct Timer {
 	void (*func)(void);
 } Timer;
 
-extern Timer Dtimer;
+Timer TimerCreate(void);
+
 #endif

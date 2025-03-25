@@ -14,8 +14,5 @@ typedef struct Player {
 	void (*Update)(struct Player *, float dt);
 } Player;
 
-void PlayerDrawF(Player *self);
-void PlayerUpdateF(Player *self, float dt);
-
-extern Player Dplayer;
+Player PlayerCreate(void);
 #endif

@@ -26,10 +26,15 @@ static void UpdateF(Timer *self, float dt)
 		}
 }
 
-Timer Dtimer = {
-	.Activate = ActivateF,
-	.Deactivate = DeactivateF,
-	.Update = UpdateF,
-	.start_time = 0,
-	.active = false,
-};
+Timer TimerCreate(void)
+{
+	Timer Dtimer = {
+		.Activate = ActivateF,
+		.Deactivate = DeactivateF,
+		.Update = UpdateF,
+		.start_time = 0,
+		.active = false,
+	};
+
+	return Dtimer;
+}
