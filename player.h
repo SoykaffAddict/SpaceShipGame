@@ -8,6 +8,8 @@ typedef struct Bullet {
 	int damage;
 	Rectangle hitbox;
 	Sprite sprite;
+	int sprite_len;
+	int speed;
 } Bullet;
 
 typedef struct Player {
@@ -19,6 +21,8 @@ typedef struct Player {
 	int lifes;
 	void (*Draw)(struct Player *);
 	void (*Update)(struct Player *, float dt);
+	Bullet *bullets_array;
+	int bullets_array_size;
 } Player;
 
 Player PlayerCreate(void);

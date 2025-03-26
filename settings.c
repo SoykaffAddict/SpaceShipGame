@@ -1,7 +1,7 @@
 #include "settings.h"
 #include <raylib.h>
 
-bool fullscreen_toggled = true;
+bool fullscreen_toggled = false;
 
 void MappingsUpdate(GlobalMappings *self)
 {
