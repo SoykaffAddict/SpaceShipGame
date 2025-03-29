@@ -1,0 +1,10 @@
+src/main.c
+src/settings.c
+-I./inc
+-lraylib
+-std=c99 
+-Wall 
+-Wextra 
+-Wpedantic 
+-Wvla 
+-g
