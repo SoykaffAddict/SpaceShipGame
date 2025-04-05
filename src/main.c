@@ -8,8 +8,6 @@
 #include "debugging.h"
 
 
-Player *CreatePlayer(void);
-
 int main(void)
 {
 	ConfigWindow();
@@ -25,5 +23,3 @@ int main(void)
 	free(p1);
 	CloseWindow();
 }
-
-
