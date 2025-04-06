@@ -1,4 +1,4 @@
-files := src/main.c src/settings.c src/player.c src/debugging.c
+files := src/main.c src/settings.c src/player.c src/debugging.c src/sprite.c
 flags := -std=c99 -Wall -Wextra -Wpedantic -Wvla -g -lraylib
 
 main: src/main.c

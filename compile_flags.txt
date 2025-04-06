@@ -2,6 +2,7 @@ src/main.c
 src/settings.c
 src/player.c
 src/debugging.c
+src/sprite.c
 -I./inc
 -lraylib
 -std=c99 

@@ -1,6 +1,7 @@
 #ifndef SPACESHIP_PLAYER 
 #define SPACESHIP_PLAYER 
 #include <raylib.h>
+#include "sprite.h"
 #include <stdlib.h>
 
 typedef struct Player {
@@ -8,19 +9,14 @@ typedef struct Player {
 	float speed;
 	Vector2 position;
 	Rectangle drawing_s;
-	Rectangle hitbox_s;
+	Rectangle hurtbox_s;
 	float bullet_cd;
 	float special_cd;
+	Sprite *sprite;
 	void (*Shoot)(void);
 	void (*Special)(void);
 	void (*Update)(void);
 	void(*Draw)(void);
-	//Sprite
-		//frames_n
-		//actual_f
-		//speed
-		//*dt
-		//*textures
 } Player;
 
 Player *CreatePlayer(void);

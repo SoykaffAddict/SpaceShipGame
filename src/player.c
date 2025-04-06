@@ -7,7 +7,7 @@ Player *CreatePlayer(void)
 		.speed = 0,
 		.position = (Vector2) {0},
 		.drawing_s = (Rectangle) {0},
-		.hitbox_s = (Rectangle) {0},
+		.hurtbox_s = (Rectangle) {0},
 		.bullet_cd = 0,
 		.special_cd = 0,
 	};

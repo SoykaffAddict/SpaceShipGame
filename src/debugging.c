@@ -17,9 +17,9 @@ void Debug_Player(Player *p)
 
 	strncat(result_text, current_text, 1000);
 
-	snprintf(current_text, 1000, "hitbox_s: X:%f  Y:%f  W:%f  H:%f\n", 
-		p->hitbox_s.x, p->hitbox_s.y, p->hitbox_s.width, 
-		p->hitbox_s.height);
+	snprintf(current_text, 1000, "hurtbox_s: X:%f  Y:%f  W:%f  H:%f\n", 
+		p->hurtbox_s.x, p->hurtbox_s.y, p->hurtbox_s.width, 
+		p->hurtbox_s.height);
 
 	strncat(result_text, current_text, 1000);
 
