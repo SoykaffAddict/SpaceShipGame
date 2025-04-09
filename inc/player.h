@@ -15,8 +15,8 @@ typedef struct Player {
 	Sprite *sprite;
 	void (*Shoot)(void);
 	void (*Special)(void);
-	void (*Update)(void);
-	void(*Draw)(void);
+	void (*Update)(struct Player *self);
+	void (*Draw)(struct Player *self);
 } Player;
 
 Player *CreatePlayer(void);

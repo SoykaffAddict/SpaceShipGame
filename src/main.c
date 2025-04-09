@@ -12,7 +12,7 @@ int main(void)
 {
 	ConfigWindow();
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, APP_TITLE);
-	float dt = GetFrameTime();
+	float dt = 0;
 
 	Player *p1 = CreatePlayer();
 	p1->speed = 300;
@@ -22,13 +22,17 @@ int main(void)
 	p1->bullet_cd = 0.5;
 	p1->special_cd = 20;
 	p1->sprite = CreateSprite(5, &dt);
+	p1->sprite->speed = 10;
+	p1->sprite->dt = &dt;
 	LoadSpriteFromDir(p1->sprite, "assets/images/neob2");
 
 	while (!WindowShouldClose()) {
+		dt = GetFrameTime();
+		p1->Update(p1);
+
 		BeginDrawing();
 			ClearBackground(BG_COLOR);
-			DrawTexture(p1->sprite->textures[0],
-					p1->position.x, p1->position.y, WHITE);
+			p1->Draw(p1);
 			Debug_Player(p1);
 		EndDrawing();
 	}

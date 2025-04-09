@@ -4,7 +4,7 @@
 
 typedef struct Sprite {
 	int frames_n;
-	int actual_f;
+	float actual_f;
 	float speed;
 	float *dt;
 	Texture2D *textures;
