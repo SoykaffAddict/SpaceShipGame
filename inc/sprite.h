@@ -12,4 +12,5 @@ typedef struct Sprite {
 
 
 Sprite *CreateSprite(int frames_n, float *dt);
+void LoadSpriteFromDir(Sprite *s, char *dir);
 #endif

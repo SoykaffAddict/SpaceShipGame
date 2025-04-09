@@ -21,11 +21,14 @@ int main(void)
 	p1->hurtbox_s = (Rectangle) {0};
 	p1->bullet_cd = 0.5;
 	p1->special_cd = 20;
-	p1->sprite = CreateSprite(8, &dt);
+	p1->sprite = CreateSprite(5, &dt);
+	LoadSpriteFromDir(p1->sprite, "assets/images/neob2");
 
 	while (!WindowShouldClose()) {
 		BeginDrawing();
 			ClearBackground(BG_COLOR);
+			DrawTexture(p1->sprite->textures[0],
+					p1->position.x, p1->position.y, WHITE);
 			Debug_Player(p1);
 		EndDrawing();
 	}

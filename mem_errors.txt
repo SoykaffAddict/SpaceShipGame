@@ -1,30 +1,25 @@
-==787788== Memcheck, a memory error detector
-==787788== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==787788== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
-==787788== Command: ./a.out
-==787788== Parent PID: 787787
-==787788== 
-==787788== 
-==787788== HEAP SUMMARY:
-==787788==     in use at exit: 311,944 bytes in 3,138 blocks
-==787788==   total heap usage: 193,839 allocs, 190,701 frees, 53,769,525 bytes allocated
-==787788== 
-==787788== 160 bytes in 1 blocks are definitely lost in loss record 2,536 of 2,577
-==787788==    at 0x4844818: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==787788==    by 0x109710: CreateSprite (sprite.c:7)
-==787788==    by 0x1092C1: main (main.c:24)
-==787788== 
-==787788== LEAK SUMMARY:
-==787788==    definitely lost: 160 bytes in 1 blocks
-==787788==    indirectly lost: 0 bytes in 0 blocks
-==787788==      possibly lost: 0 bytes in 0 blocks
-==787788==    still reachable: 311,704 bytes in 3,135 blocks
-==787788==         suppressed: 80 bytes in 2 blocks
-==787788== Reachable blocks (those to which a pointer was found) are not shown.
-==787788== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==787788== 
-==787788== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
---787788-- 
---787788-- used_suppression:      2 dtv-addr-init /usr/libexec/valgrind/default.supp:1575 suppressed: 80 bytes in 2 blocks
-==787788== 
-==787788== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==496818== Memcheck, a memory error detector
+==496818== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==496818== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==496818== Command: ./a.out
+==496818== Parent PID: 496817
+==496818== 
+==496818== 
+==496818== HEAP SUMMARY:
+==496818==     in use at exit: 311,784 bytes in 3,137 blocks
+==496818==   total heap usage: 188,081 allocs, 184,944 frees, 54,581,611 bytes allocated
+==496818== 
+==496818== LEAK SUMMARY:
+==496818==    definitely lost: 0 bytes in 0 blocks
+==496818==    indirectly lost: 0 bytes in 0 blocks
+==496818==      possibly lost: 0 bytes in 0 blocks
+==496818==    still reachable: 311,704 bytes in 3,135 blocks
+==496818==         suppressed: 80 bytes in 2 blocks
+==496818== Reachable blocks (those to which a pointer was found) are not shown.
+==496818== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==496818== 
+==496818== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--496818-- 
+--496818-- used_suppression:      2 dtv-addr-init /usr/libexec/valgrind/default.supp:1575 suppressed: 80 bytes in 2 blocks
+==496818== 
+==496818== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
