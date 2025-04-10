@@ -6,6 +6,6 @@ main: src/main.c
 
 log:
 	valgrind --leak-check=full --show-error-list=all --track-origins=yes \
-	--log-file=mem_errors.txt ./a.out
+	--log-file=mem_errors.log ./a.out
 clean:
 	rm ./a.out

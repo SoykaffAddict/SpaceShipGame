@@ -1,2 +1,2 @@
 *.out
-./mem_errors.txt
+*.log
