@@ -1,11 +1,11 @@
 #ifndef SPACESHIP_PLAYER 
 #define SPACESHIP_PLAYER 
 #include <raylib.h>
+#include "keymaps.h"
 #include "sprite.h"
 #include <stdlib.h>
 
 typedef struct Player {
-	//ControlsDB *cdb;
 	float speed;
 	Vector2 position;
 	Rectangle drawing_s;
@@ -15,11 +15,11 @@ typedef struct Player {
 	Sprite *sprite;
 	void (*Shoot)(void);
 	void (*Special)(void);
-	void (*Update)(struct Player *self, float dt);
+	void (*Update)(struct Player *self, Keymaps *km, float dt);
 	void (*Draw)(struct Player *self);
 } Player;
 
-enum Spaceships{EMPTY, NEOB2, VNANO, LKMETA};
+enum Spaceships{EMPTY_SHIP, NEOB2, VNANO, LKMETA};
 
 Player *CreatePlayer(int ship);
 #endif

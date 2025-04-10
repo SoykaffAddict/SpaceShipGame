@@ -1,3 +1,4 @@
+#include "keymaps.h"
 #include "settings.h"
 #include <raylib.h>
 #include <stdio.h>
@@ -7,6 +8,7 @@
 #include "player.h"
 #include "debugging.h"
 #include "sprite.h"
+#include "keymaps.h"
 
 int main(void)
 {
@@ -16,10 +18,11 @@ int main(void)
 
 	//NEOB2 setup
 	Player *p1 = CreatePlayer(NEOB2);
+	Keymaps *global_keymaps = CreateKeymaps(DEFAULT);
 
 	while (!WindowShouldClose()) {
 		dt = GetFrameTime();
-		p1->Update(p1, dt);
+		p1->Update(p1, global_keymaps, dt);
 
 		BeginDrawing();
 			ClearBackground(BG_COLOR);
@@ -28,6 +31,7 @@ int main(void)
 		EndDrawing();
 	}
 
+	free(global_keymaps);
 	free(p1->sprite->textures);
 	free(p1->sprite);
 	free(p1);
