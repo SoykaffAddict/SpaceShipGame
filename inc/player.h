@@ -15,9 +15,11 @@ typedef struct Player {
 	Sprite *sprite;
 	void (*Shoot)(void);
 	void (*Special)(void);
-	void (*Update)(struct Player *self);
+	void (*Update)(struct Player *self, float dt);
 	void (*Draw)(struct Player *self);
 } Player;
 
-Player *CreatePlayer(void);
+enum Spaceships{EMPTY, NEOB2, VNANO, LKMETA};
+
+Player *CreatePlayer(int ship);
 #endif

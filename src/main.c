@@ -14,21 +14,12 @@ int main(void)
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, APP_TITLE);
 	float dt = 0;
 
-	Player *p1 = CreatePlayer();
-	p1->speed = 300;
-	p1->position = (Vector2) {SCREEN_HCENTER, SCREEN_VCENTER};
-	p1->drawing_s = (Rectangle) {0};
-	p1->hurtbox_s = (Rectangle) {0};
-	p1->bullet_cd = 0.5;
-	p1->special_cd = 20;
-	p1->sprite = CreateSprite(5, &dt);
-	p1->sprite->speed = 10;
-	p1->sprite->dt = &dt;
-	LoadSpriteFromDir(p1->sprite, "assets/images/neob2");
+	//NEOB2 setup
+	Player *p1 = CreatePlayer(NEOB2);
 
 	while (!WindowShouldClose()) {
 		dt = GetFrameTime();
-		p1->Update(p1);
+		p1->Update(p1, dt);
 
 		BeginDrawing();
 			ClearBackground(BG_COLOR);

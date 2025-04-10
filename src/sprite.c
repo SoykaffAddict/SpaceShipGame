@@ -8,7 +8,7 @@
 static int compare (const void * a, const void * b );
 static const char *GetFilenameExt(const char *filename);
 
-Sprite *CreateSprite(int frames_n, float *dt) 
+Sprite *CreateSprite(int frames_n)
 {
 	Texture2D *textures = malloc(sizeof(Texture2D) * frames_n);
 	Sprite *sp1 = malloc(sizeof(Sprite));
@@ -16,7 +16,6 @@ Sprite *CreateSprite(int frames_n, float *dt)
 		.frames_n = frames_n,
 		.actual_f = 0,
 		.speed = 0,
-		.dt = dt,
 		.textures = textures,
 	};
 

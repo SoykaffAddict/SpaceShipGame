@@ -6,11 +6,10 @@ typedef struct Sprite {
 	int frames_n;
 	float actual_f;
 	float speed;
-	float *dt;
 	Texture2D *textures;
 } Sprite;
 
 
-Sprite *CreateSprite(int frames_n, float *dt);
+Sprite *CreateSprite(int frames_n);
 void LoadSpriteFromDir(Sprite *s, char *dir);
 #endif
