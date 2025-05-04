@@ -9,6 +9,7 @@
 #include "debugging.h"
 #include "sprite.h"
 #include "keymaps.h"
+#include "bullet.h"
 
 int main(void)
 {
@@ -19,7 +20,8 @@ int main(void)
 	//NEOB2 setup
 	Player *p1 = CreatePlayer(NEOB2);
 	Keymaps *global_keymaps = CreateKeymaps(DEFAULT);
-
+	bool b = CreateBullet((Vector2) {50, 50});
+	printf("%d\n", b);
 	while (!WindowShouldClose()) {
 		dt = GetFrameTime();
 		p1->Update(p1, global_keymaps, dt);
