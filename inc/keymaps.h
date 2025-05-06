@@ -9,6 +9,7 @@ typedef struct Keymaps {
 	int p_down;
 	int p_left;
 	int p_right;
+	int shoot;
 } Keymaps;
 
 enum keymap_presets {EMPTY_KEYMAPS, DEFAULT, CUSTOM};

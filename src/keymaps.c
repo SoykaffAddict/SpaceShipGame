@@ -13,6 +13,7 @@ Keymaps *CreateKeymaps(int preset) {
 			.p_down = KEY_S,
 			.p_left = KEY_A,
 			.p_right = KEY_D,
+			.shoot = KEY_H,
 		};
 		return km;
 	}
@@ -22,6 +23,7 @@ Keymaps *CreateKeymaps(int preset) {
 		.p_down = 0,
 		.p_left = 0,
 		.p_right = 0,
+		.shoot = KEY_H,
 	};
 
 	return km;

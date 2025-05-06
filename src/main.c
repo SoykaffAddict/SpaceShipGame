@@ -20,15 +20,15 @@ int main(void)
 	//NEOB2 setup
 	Player *p1 = CreatePlayer(NEOB2);
 	Keymaps *global_keymaps = CreateKeymaps(DEFAULT);
-	bool b = CreateBullet((Vector2) {50, 50});
-	printf("%d\n", b);
 	while (!WindowShouldClose()) {
 		dt = GetFrameTime();
 		p1->Update(p1, global_keymaps, dt);
+		UpdateBullets(dt);
 
 		BeginDrawing();
 			ClearBackground(BG_COLOR);
 			p1->Draw(p1);
+			DrawBullets();
 			Debug_Player(p1);
 		EndDrawing();
 	}
@@ -37,6 +37,7 @@ int main(void)
 	free(p1->sprite->textures);
 	free(p1->sprite);
 	free(p1);
+	CleanupBullets();
 
 	CloseWindow();
 }

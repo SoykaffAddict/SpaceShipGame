@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <settings.h>
 #include <raymath.h>
+#include "bullet.h"
 
 static void DrawPlayer(struct Player *self);
 static void UpdatePlayer(struct Player *self, Keymaps *km, float dt);
@@ -52,13 +53,21 @@ static void DrawPlayer(struct Player *self)
 
 void UpdatePlayer(struct Player *self, Keymaps *km, float dt)
 {
+	// Update Sprite frame
 	self->sprite->actual_f += (self->sprite->speed * dt);
 	
+	// Player movement
 	Vector2 direction = {0};
 	direction.x = (int) IsKeyDown(km->p_right) - IsKeyDown(km->p_left);
 	direction.y = (int) IsKeyDown(km->p_down) - IsKeyDown(km->p_up);
 	Vector2Normalize(direction);
-
 	self->position.x += direction.x * self->speed * dt;
 	self->position.y += direction.y * self->speed * dt;
+
+	// Shoot
+	if (IsKeyPressed(km->shoot)) {
+		Vector2 player_hcenter = {self->position.x + (float) 
+			self->sprite->textures->width / 2, self->position.y};
+		CreateBullet(player_hcenter);
+	}
 }

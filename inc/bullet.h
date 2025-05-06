@@ -15,4 +15,7 @@ typedef struct Bullet {
 } Bullet;
 
 bool CreateBullet(Vector2 b_pos);
+void DrawBullets(void);
+void UpdateBullets(float dt);
+void CleanupBullets(void);
 #endif

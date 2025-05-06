@@ -40,8 +40,6 @@ void LoadSpriteFromDir(Sprite *s, char *dir)
 		if (strcmp(GetFilenameExt(de->d_name), img_ext) == 0) {
 			dir_strings[files_read] = de->d_name;
 			files_read++;
-		} else {
-			printf("%s is not a png, skipping...\n", de->d_name);
 		}
 	}
 
