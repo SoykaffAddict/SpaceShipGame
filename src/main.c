@@ -10,6 +10,7 @@
 #include "sprite.h"
 #include "keymaps.h"
 #include "bullet.h"
+#include "meteor.h"
 
 int main(void)
 {
@@ -19,16 +20,20 @@ int main(void)
 
 	//NEOB2 setup
 	Player *p1 = CreatePlayer(NEOB2);
+	Meteor *m1 = CreateMeteor(0);
+
 	Keymaps *global_keymaps = CreateKeymaps(DEFAULT);
 	while (!WindowShouldClose()) {
 		dt = GetFrameTime();
 		p1->Update(p1, global_keymaps, dt);
 		UpdateBullets(dt);
+		m1->Update(m1, dt);
 
 		BeginDrawing();
 			ClearBackground(BG_COLOR);
 			p1->Draw(p1);
 			DrawBullets();
+			m1->Draw(m1);
 			Debug_Player(p1);
 		EndDrawing();
 	}
@@ -37,6 +42,9 @@ int main(void)
 	free(p1->sprite->textures);
 	free(p1->sprite);
 	free(p1);
+	free(m1->sprite->textures);
+	free(m1->sprite);
+	free(m1);
 	CleanupBullets();
 
 	CloseWindow();

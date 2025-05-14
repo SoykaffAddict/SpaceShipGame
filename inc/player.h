@@ -1,5 +1,5 @@
-#ifndef SPACESHIP_PLAYER 
-#define SPACESHIP_PLAYER 
+#ifndef SPACESHIP_PLAYER
+#define SPACESHIP_PLAYER
 #include <raylib.h>
 #include "keymaps.h"
 #include "sprite.h"

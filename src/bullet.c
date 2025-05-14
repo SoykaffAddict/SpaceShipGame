@@ -1,4 +1,4 @@
-#include "sprite."
+#include "sprite.h"
 #include <bullet.h>
 #include <raylib.h>
 #include <stdbool.h>

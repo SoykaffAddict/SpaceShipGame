@@ -1,5 +1,5 @@
 files := src/main.c src/settings.c src/player.c src/debugging.c src/sprite.c\
-	 src/keymaps.c src/bullet.c
+	 src/keymaps.c src/bullet.c src/meteor.c
 flags := -std=c99 -Wall -Wextra -Wpedantic -Wvla -g -lraylib
 
 main: src/main.c
