@@ -5,11 +5,12 @@
 #include "sprite.h"
 #include <stdlib.h>
 #include <raymath.h>
+#include <time.h>
 
 typedef struct Meteor {
 	float speed;
 	Vector2 position;
-	Vector2 direction;
+	Vector2 origin;
 	Rectangle drawing_s;
 	Rectangle hurtbox_s;
 	Sprite *sprite;
