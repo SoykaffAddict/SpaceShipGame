@@ -1,71 +1,100 @@
 #include "meteor.h"
 #include <raylib.h>
 #include <raymath.h>
+#include <stdbool.h>
 #include <stdlib.h>
+#define MAX_METEORS 5
+#define METEOR_SPEED 300
 
-static void DrawMeteor(struct Meteor *self);
-static void UpdateMeteor(struct Meteor *self, float dt);
-static float float_rand( float min, float max );
+static Meteor screen_meteors[MAX_METEORS] = {0};
 
-Meteor *CreateMeteor(int ship)
+bool CreateMeteor(void)
 {
-	Meteor *p = malloc(sizeof(Meteor));
+	for (int i = 0; i < MAX_METEORS; i++) {
+		if (screen_meteors[i].speed == 0) {
+			Meteor m1 = {
+				.speed = METEOR_SPEED,
+				.position = (Vector2) {0},
+				.origin = (Vector2) {0},
+				.drawing_s = (Rectangle) {0},
+				.hurtbox_s = (Rectangle) {0},
+				.sprite = CreateSprite(5),
+				.img = LoadImage("assets/images/meteor/meteor.png"),
+			};
+			m1.sprite->speed = 10;
+			ImageResize(&m1.img, m1.img.width * 0.25,
+							m1.img.height * 0.25);
 
+			// Set random position for meteor
+			SetRandomSeed(time(0));
+			int random_axis = GetRandomValue(0, 1);
 
-	*p = (Meteor) {
-		.speed = 300,
-		.position = (Vector2) {0},
-		.origin = (Vector2) {float_rand(-1, 1.0), float_rand(0, 1.0)},
-		.drawing_s = (Rectangle) {0},
-		.hurtbox_s = (Rectangle) {0},
-		.sprite = CreateSprite(5),
-		.img = LoadImage("assets/images/meteor/meteor.png"),
-		.Draw = DrawMeteor,
-		.Update = UpdateMeteor,
-	};
-	p->sprite->speed = 10;
-	ImageResize(&p->img, p->img.width * 0.25, p->img.height * 0.25);
-	//LoadSpriteFromDir(p->sprite, "assets/images/neob2");
-
-	// Set random position for meteor
-	SetRandomSeed(time(0));
-	int random_axis = GetRandomValue(0, 1);
-
-	if (random_axis) {
-		p->position.x = GetRandomValue(-p->img.width,
+			if (random_axis) {
+				m1.position.x = GetRandomValue(-m1.img.width,
 							GetScreenWidth());
-		p->position.y = -p->img.height;
-	} else {
-		p->position.y = GetRandomValue(-p->img.height,
+				m1.position.y = -m1.img.height;
+			} else {
+				m1.position.y = GetRandomValue(-m1.img.height,
 							GetScreenHeight() / 2);
-		p->position.x = -p->img.width;
+				m1.position.x = -m1.img.width;
+			}
+
+			m1.origin = m1.position;
+			screen_meteors[i] = m1;
+			return true;
+		}
 	}
-
-	p->origin = p->position;
-	return p;
+	return false;
 }
 
-static void DrawMeteor(struct Meteor *self)
+void DrawMeteor(void)
 {
-	Texture2D tex = LoadTextureFromImage(self->img);
-	DrawTextureV(tex, self->position, WHITE);
+	for (int i = 0; i < MAX_METEORS; i++) {
+		Texture2D tex = LoadTextureFromImage(screen_meteors[i].img);
+		DrawTextureV(tex, screen_meteors[i].position, WHITE);
+	}
 }
 
-static void UpdateMeteor(struct Meteor *self, float dt)
+void UpdateMeteor(float dt)
 {
 	// Meteor movement
-	Vector2 s_center = {GetScreenWidth() / 2.0, GetScreenHeight() / 2.0};
-	Vector2 destiny = {
-		s_center.x - self->origin.x + s_center.x,
-		s_center.y - self->origin.y + s_center.y ,
-	};
+	for (int i = 0; i < MAX_METEORS; i++) {
+		Meteor *m = &screen_meteors[i];
+		if (m->speed != 0) {
+			Vector2 s_center = {
+				GetScreenWidth() / 2.0,
+				GetScreenHeight() / 2.0
+			};
+			Vector2 destiny = {
+				s_center.x - m->origin.x + s_center.x,
+				s_center.y - m->origin.y + s_center.y,
+			};
 
-	self->position = Vector2MoveTowards(self->position, destiny, self->speed * dt);
+			m->position = Vector2MoveTowards(
+				m->position,
+				destiny,
+				m->speed * dt
+			);
+			if (m->position.x > GetScreenWidth() * 1.5 ||
+				m->position.y >  GetScreenHeight() * 1.5 ||
+				m->position.x < GetScreenWidth() * -1.5 ||
+				m->position.y < GetScreenHeight() * -1.5) {
+
+				free(m->sprite->textures);
+				free(m->sprite);
+				*m = (Meteor) {0};
+			}
+		}
+	}
 }
 
-float float_rand( float min, float max )
+void CleanupMeteor(void)
 {
-	srand(time(NULL));
-	float scale = rand() / (float) RAND_MAX; /* [0, 1.0] */
-	return min + scale * ( max - min );      /* [min, max] */
+	for (int i = 0; i < MAX_METEORS; i++) {
+		Meteor *m = &screen_meteors[i];
+		if (m->speed != 0) {
+			free(m->sprite->textures);
+			free(m->sprite);
+		}
+	}
 }

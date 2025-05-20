@@ -15,9 +15,10 @@ typedef struct Meteor {
 	Rectangle hurtbox_s;
 	Sprite *sprite;
 	Image img;
-	void (*Update)(struct Meteor *self, float dt);
-	void (*Draw)(struct Meteor *self);
 } Meteor;
 
-Meteor *CreateMeteor(int ship);
+bool CreateMeteor(void);
+void UpdateMeteor(float dt);
+void DrawMeteor(void);
+void CleanupMeteor(void);
 #endif
